@@ -7,7 +7,7 @@
     "test": "jest",
     "test:watch": "npm test -- --watch",
     "build": "tsc -p tsconfig.json",
-    "precommit": "npm test"
+    "precommit": "npm test && lint-staged"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,8 @@
     "@types/node": "^8.0.25",
     "husky": "^0.14.3",
     "jest": "^20.0.4",
+    "lint-staged": "^4.0.4",
+    "prettier": "^1.5.3",
     "ts-jest": "^20.0.10",
     "typescript": "^2.4.2"
   },
@@ -36,5 +38,11 @@
       ".ts": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": ".*\\.spec\\.ts$"
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "prettier --write --single-quote --tab-width 4",
+      "git add"
+    ]
   }
 }
